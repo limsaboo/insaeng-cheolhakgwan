@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#120709">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="인생철학관">
 <title>임박사 인생철학관 · 2027 신년운세 · 사주풀이 · 이름·작명 · 속궁합</title>
 <meta name="description" content="임박사 인생철학관 — 2027 신년운세, 사주풀이, 이름·한자 작명, 속궁합, 당사주·기문둔갑·육효. 생일만 넣으면 바로 보여 드려요.">
 <meta name="kbg-chapter" content="인생철학관 / 사주·작명">
@@ -2069,6 +2075,31 @@ $("go").onclick=function(){
   $("form").style.display="none";$("result").classList.add("on");window.scrollTo(0,0);
 };
 buildForm();
+</script>
+<style>
+#instBtn{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;display:none;background:#FFC83D;color:#1a0b10;border:0;border-radius:999px;padding:14px 20px;font:900 17px/1.2 inherit;font-family:inherit;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+#instBox{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:20px}
+#instBox .in{background:#220F16;border:2px solid #FFC83D;border-radius:18px;padding:22px 20px;max-width:360px;color:#fff;font-size:18px;line-height:1.9;font-weight:700}
+#instBox b{color:#FFC83D}#instBox button{margin-top:12px;width:100%;background:#FFC83D;color:#1a0b10;border:0;border-radius:12px;padding:13px;font:900 17px inherit;font-family:inherit}
+</style>
+<button id="instBtn" type="button">📲 바탕화면에 앱 설치</button>
+<div id="instBox"><div class="in"><div id="instTxt"></div><button type="button" id="instOk">확인</button></div></div>
+<script>
+(function(){
+var dp=null,btn=document.getElementById("instBtn"),box=document.getElementById("instBox"),txt=document.getElementById("instTxt");
+var standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+if(standalone)return;
+var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;btn.style.display="block";});
+window.addEventListener("appinstalled",function(){btn.style.display="none";});
+if(ios)btn.style.display="block";
+btn.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.finally(function(){dp=null;btn.style.display="none";});return;}
+ txt.innerHTML=ios?"① 아래 <b>공유(□↑)</b> 버튼<br>② <b>홈 화면에 추가</b><br>③ <b>추가</b>":"브라우저 오른쪽 위 <b>⋮ 메뉴</b><br>→ <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>";
+ box.style.display="flex";};
+document.getElementById("instOk").onclick=function(){box.style.display="none";};
+})();
 </script>
 </body>
 </html>
