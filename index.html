@@ -283,6 +283,14 @@ h2,.s{text-wrap:balance}
 
 /* ---- 2027 신년운세 ---- */
 .sinban{display:block;margin:2px 0 14px;padding:12px 8px;border:3px solid var(--gold);border-radius:18px;background:linear-gradient(120deg,#6A1636,#2A1220);text-align:center;text-decoration:none;cursor:pointer}
+.sinsign{margin:6px 0 14px;padding:22px 8px 18px;border:4px solid var(--gold);border-radius:22px;text-align:center;background:linear-gradient(160deg,#8A1A3C,#2A1220 72%);box-shadow:0 0 0 3px #120709,0 0 0 6px rgba(255,200,61,.35)}
+.sinsign .s1{font-size:26px;font-weight:900;color:#FFC83D;white-space:nowrap;line-height:1.5}
+.sinsign .s2{font-size:48px;font-weight:900;color:#fff;white-space:nowrap;line-height:1.35;letter-spacing:2px}
+.sinsign .s3{font-size:14px;font-weight:800;color:#FF9FC0;white-space:nowrap;line-height:1.8}
+.sinsign .s4{margin-top:10px;padding-top:10px;border-top:2px dashed rgba(255,200,61,.5);font-size:17px;font-weight:900;color:#fff;white-space:nowrap;line-height:1.7}
+body.sinres .hero,body.sinres .sinban,body.sinres .tabs{display:none}
+.sinsign,.sinwrap{grid-column:1/-1}
+.sinwrap{display:flex;flex-direction:column}.sinwrap.open #paid{order:1}.sinwrap.open #menu{order:2}
 .sinban b{display:block;font-size:19px;color:var(--gold);font-weight:900;white-space:nowrap;line-height:1.6}
 .sinban span{display:block;font-size:14px;color:#fff;font-weight:800;line-height:1.7;white-space:nowrap}
 .card.sincard{border-color:var(--gold);background:linear-gradient(180deg,#4A1430,#220F16)}
@@ -308,7 +316,7 @@ h2,.s{text-wrap:balance}
   <svg viewBox="0 -12 240 194" style="width:100%;max-width:300px;display:block;margin:10px auto 0" role="img" aria-label="오행 상생 상극 그림"><line x1="120" y1="16" x2="156" y2="128" stroke="#FF3D7F" stroke-width="2" stroke-dasharray="5 5"/><line x1="179" y1="59" x2="84" y2="128" stroke="#FF3D7F" stroke-width="2" stroke-dasharray="5 5"/><line x1="156" y1="128" x2="61" y2="59" stroke="#FF3D7F" stroke-width="2" stroke-dasharray="5 5"/><line x1="84" y1="128" x2="120" y2="16" stroke="#FF3D7F" stroke-width="2" stroke-dasharray="5 5"/><line x1="61" y1="59" x2="179" y2="59" stroke="#FF3D7F" stroke-width="2" stroke-dasharray="5 5"/><line x1="120" y1="16" x2="179" y2="59" stroke="#FFC83D" stroke-width="4"/><line x1="179" y1="59" x2="156" y2="128" stroke="#FFC83D" stroke-width="4"/><line x1="156" y1="128" x2="84" y2="128" stroke="#FFC83D" stroke-width="4"/><line x1="84" y1="128" x2="61" y2="59" stroke="#FFC83D" stroke-width="4"/><line x1="61" y1="59" x2="120" y2="16" stroke="#FFC83D" stroke-width="4"/><circle cx="120" cy="16" r="21" fill="#0B8F3A" stroke="#120709" stroke-width="3"/><text x="120" y="23" text-anchor="middle" font-size="21" font-weight="900" fill="#fff">木</text><circle cx="179" cy="59" r="21" fill="#E8352B" stroke="#120709" stroke-width="3"/><text x="179" y="66" text-anchor="middle" font-size="21" font-weight="900" fill="#fff">火</text><circle cx="156" cy="128" r="21" fill="#E6A100" stroke="#120709" stroke-width="3"/><text x="156" y="135" text-anchor="middle" font-size="21" font-weight="900" fill="#111">土</text><circle cx="84" cy="128" r="21" fill="#F4F1EA" stroke="#120709" stroke-width="3"/><text x="84" y="135" text-anchor="middle" font-size="21" font-weight="900" fill="#111">金</text><circle cx="61" cy="59" r="21" fill="#1E6FE0" stroke="#120709" stroke-width="3"/><text x="61" y="66" text-anchor="middle" font-size="21" font-weight="900" fill="#fff">水</text><line x1="20" y1="172" x2="44" y2="172" stroke="#FFC83D" stroke-width="4"/><text x="50" y="177" font-size="13" font-weight="900" fill="#FFC83D">서로 살림</text><line x1="132" y1="172" x2="156" y2="172" stroke="#FF3D7F" stroke-width="3" stroke-dasharray="5 5"/><text x="162" y="177" font-size="13" font-weight="900" fill="#FF8FB5">서로 누름</text></svg>
 </div>
 
-<a class="sinban" id="sinban" href="#form" role="button"><b>🎊 2027 丁未年 신년운세</b><span>생일만 넣고 ‘내 사주 보기’ → 아래에서 열기</span></a>
+<a class="sinban" id="sinban" href="#form" role="button"><b>🎊 2027 丁未年 신년운세</b><span>생일만 넣고 ‘2027 신년운세 보기’ 누르세요</span></a>
 
 <div class="tabs">
   <button class="tab on" data-m="read" type="button">내 사주풀이</button>
@@ -424,7 +432,7 @@ function analyze(A,B){
 /* ===== 입력 화면 ===== */
 const $=id=>document.getElementById(id);
 const SIJIN=[["자시 · 밤 11:30 ~ 새벽 1:29"],["축시 · 새벽 1:30 ~ 3:29"],["인시 · 새벽 3:30 ~ 5:29"],["묘시 · 새벽 5:30 ~ 7:29"],["진시 · 아침 7:30 ~ 9:29"],["사시 · 오전 9:30 ~ 11:29"],["오시 · 낮 11:30 ~ 오후 1:29"],["미시 · 오후 1:30 ~ 3:29"],["신시 · 오후 3:30 ~ 5:29"],["유시 · 오후 5:30 ~ 7:29"],["술시 · 저녁 7:30 ~ 9:29"],["해시 · 밤 9:30 ~ 11:29"]];
-let MODE="read";
+let MODE="read";let SIN_MODE=false;
 function personHTML(k,label,cls,hint){
   const years='<option value="">년</option>'+Array.from({length:96},(_,i)=>2025-i).map(y=>'<option value="'+y+'">'+y+'년</option>').join("");
   const tm='<option value="">시간 모름</option>'+SIJIN.map((s,i)=>'<option value="'+i+'">'+s[0]+'</option>').join("");
@@ -498,6 +506,7 @@ function buildForm(){
   $("err").textContent="";
   const HT={read:["생일만 넣으면<br><em>내 사주</em>가 바로!","음력 생일 그대로 넣으셔도 돼요<br>남자·여자에 맞춰 풀어 드려요"],match:["두 사람 생일만 넣으면<br><em>속궁합</em> 점수가 바로!","음력 생일 그대로 넣으셔도 돼요<br>두 사람의 사주를 나란히 보여 드려요"],name:["내 이름은 내 사주를<br><em>돕고</em> 있을까?","사주와 이름을 함께 넣으면<br>사이다처럼 팩트로 풀어 드려요<br>한자까지 고르면 81수리도 봐요"],fate:["당사주 · 기문둔갑 · 육효<br><em>세 가지 점</em>을 한 번에!","생일로 나의 네 별을 찾고<br>지금 좋은 방향과 동전 점까지 봐요"]}[MODE];
   $("h1").innerHTML=HT[0];$("hsub").innerHTML=HT[1];
+  if(SIN_MODE&&MODE==="read"){$("go").textContent="🎊 2027 신년운세 보기";$("h1").innerHTML="생일만 넣으면<br><em>2027 신년운세</em>가 바로!";$("hsub").innerHTML="丁未年 · 월별 12달 · 재물 · 연애 · 삼재까지<br>남자·여자에 맞춰 풀어 드려요";}
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{MODE=t.dataset.m;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));
   $("result").classList.remove("on");$("form").style.display="";buildForm();window.scrollTo(0,0);});
@@ -794,7 +803,7 @@ function renderMatch(a,b){
   setTimeout(()=>{$("bar").style.width=R.score+"%";},60);
 }
 function bindCommon(){
-  $("again").onclick=function(){$("result").classList.remove("on");$("form").style.display="";window.scrollTo(0,0);};
+  $("again").onclick=function(){document.body.classList.remove("sinres");$("result").classList.remove("on");$("form").style.display="";window.scrollTo(0,0);};
   $("share").onclick=function(){
     if(!LAST)return;
     if(navigator.share){navigator.share({title:"임박사 인생철학관",text:LAST.text}).catch(()=>{});}
@@ -1200,10 +1209,10 @@ function renderName(p){
 
 /* ---------- 유료 메뉴 · 신청서 · 해제코드 ---------- */
 const MENU_SEL=new Set();
-function menuHTML(p){
-  const rows=PRODUCTS.map(x=>'<div class="prod'+(x.id==="all"?" pkg":"")+'" data-id="'+x.id+'" role="checkbox" aria-checked="false" tabindex="0"><span class="ck"></span><span class="pt"><b>'+x.ico+' '+x.t+'</b><small>'+x.d+'</small></span><span class="pp" id="pp_'+x.id+'">'+won(x.p)+'</span></div>').join("");
-  return '<div class="card full" id="menu"><h2>🛒 풀이 메뉴 · 필요한 것만 골라요</h2><div class="teaser" style="font-size:15px">신청하면 입금 확인 후<br>해제코드를 보내 드려요</div><div class="bank">입금 계좌 · '+BANK_TXT+'</div>'
-   +'<label>내 이름 (이름·작명 풀이용)</label><input id="nm_in" class="in" type="text" maxlength="5" placeholder="예: 김민준" autocomplete="off" value="'+(p.name?p.name.full:"")+'">'
+function menuHTML(p,only){
+  const rows=PRODUCTS.filter(x=>!only||x.id===only).map(x=>'<div class="prod'+(x.id==="all"?" pkg":"")+'" data-id="'+x.id+'" role="checkbox" aria-checked="false" tabindex="0"><span class="ck"></span><span class="pt"><b>'+x.ico+' '+x.t+'</b><small>'+x.d+'</small></span><span class="pp" id="pp_'+x.id+'">'+won(x.p)+'</span></div>').join("");
+  return '<div class="card full" id="menu"><h2>'+(only?"🎊 2027 신년운세 신청":"🛒 풀이 메뉴 · 필요한 것만 골라요")+'</h2><div class="teaser" style="font-size:15px">신청하면 입금 확인 후<br>해제코드를 보내 드려요</div><div class="bank"><span style="display:block;white-space:nowrap">입금 계좌</span><span style="display:block;white-space:nowrap">'+BANK_TXT+'</span></div>'
+   +'<div'+(only?' style="display:none"':'')+'><label>내 이름 (이름·작명 풀이용)</label><input id="nm_in" class="in" type="text" maxlength="5" placeholder="예: 김민준" autocomplete="off" value="'+(p.name?p.name.full:"")+'"></div>'
    +(isAdmin()?admBox(p):'')
    +'<div class="plist">'+rows+'</div>'
    +'<div class="total"'+(isAdmin()?' style="display:none"':'')+'><span>선택 <b id="tcnt">0</b>개</span><b id="ttot">0원</b></div><div class="help" id="thint"></div>'
@@ -1286,6 +1295,7 @@ function wireMenu(p){
     const norm=raw.slice(0,4)+"-"+raw.slice(4,8),hit=PRODUCTS.find(x=>codeFor(x.id,p.sol,p.sex)===norm);
     if(!hit){msg.textContent="코드가 맞지 않아요. 신청한 생년월일·성별이 같은지 확인해 주세요";return;}
     const un=getUnlocked(p);if(!un.includes(hit.id))un.push(hit.id);setUnlocked(p,un);
+    if(SIN_MODE&&(hit.id==="sin27"||hit.id==="all")){renderSin27(p);window.scrollTo(0,0);return;}
     msg.style.color="#7CFFB2";msg.textContent="✅ ‘"+hit.t+"’ 열렸어요";$("code_in").value="";
     recalcMenu(p);renderPaid(p,true);
   };
@@ -2060,7 +2070,24 @@ REPORTS.sin27=(c0,p)=>{
   ]));
 };
 
-$("sinban").onclick=function(e){e.preventDefault();const t=document.querySelector('.tab[data-m="read"]');if(t)t.click();setTimeout(function(){$("form").scrollIntoView({behavior:"smooth",block:"start"});},60);};
+function renderSin27(p){
+  const c=s27(p),sj=samjae27(c.P.year.b),own=getUnlocked(p),open=own.includes("sin27")||own.includes("all");
+  const hi=top3m(c.ms),lo=low2m(c.ms),who=p.sex==="m"?"남자":"여자";
+  const sign='<div class="sinsign"><div class="s1">🎊 2027 丁未年</div><div class="s2">신년운세</div><div class="s3">붉은 양의 해 · 입춘 2027.02.04</div><div class="s4">'+p.sol.y+'년 '+p.sol.m+'월 '+p.sol.d+'일 · '+who+'</div></div>';
+  const bar='<div class="lk"><div class="blur">'+monthBars(c.ms,hi,lo)+'</div><div class="cover">🔒 12달 흐름 열기</div></div>';
+  const what='<div class="sinwhat"><span>💰 재물</span><span>❤️ 연애</span><span>💼 직업</span><span>🌿 건강</span><span>📅 12달</span><span>🍀 개운</span></div>';
+  const free=open?'':'<div class="card full sincard"><h2>맛보기 · 내 2027 한 줄</h2><div class="teaser">“'+KW27[c.g]+'” · 붉은 양의 해</div>'
+    +'<div class="blks">'+blk("내 2027 한 줄 총운",YEAR_TG[c.t].t,false)+blk("삼재 체크 · "+sj.st,sj.txt,false)+'</div>'
+    +bar+what+'<button class="btn gold" id="sin_go" type="button">🎊 2027 신년운세 열기 · '+won(PROD_BY.sin27.p)+'</button></div>';
+  $("result").innerHTML=sign+free+'<div class="sinwrap'+(open?' open':'')+'">'+menuHTML(p,"sin27")+'</div>'
+    +'<div class="actions full"><button class="btn line" id="sin_read" type="button">내 사주풀이도 보기 (무료)</button><button class="btn line" id="share" type="button">결과 공유하기</button><button class="btn line" id="again" type="button">다시 하기</button></div>';
+  LAST={text:"내 2027년 키워드는 ‘"+KW27[c.g]+"’! 2027 丁未年 신년운세 - 임박사 인생철학관"};
+  document.body.classList.add("sinres");
+  bindCommon();wireMenu(p);
+  if(!open){MENU_SEL.clear();MENU_SEL.add("sin27");recalcMenu(p);}
+  $("sin_read").onclick=function(){SIN_MODE=false;document.body.classList.remove("sinres");buildForm();window.RERENDER=function(){renderReading(p);if(typeof adminOpen==="function")adminOpen();};window.RERENDER();window.scrollTo(0,0);};
+}
+$("sinban").onclick=function(e){e.preventDefault();const t=document.querySelector('.tab[data-m="read"]');if(t)t.click();SIN_MODE=true;buildForm();setTimeout(function(){$("form").scrollIntoView({behavior:"smooth",block:"start"});},60);};
 
 $("go").onclick=function(){
   const A=getPerson("A");if(A.err){$("err").textContent=A.err;return;}
@@ -2070,7 +2097,7 @@ $("go").onclick=function(){
   if(MODE==="match"){B=getPerson("B");if(B.err){$("err").textContent=B.err;return;}}
   $("err").textContent="";
   const md=MODE;
-  window.RERENDER=function(){if(md==="read")renderReading(A);else if(md==="name")renderName(A);else if(md==="fate")renderFate(A);else renderMatch(A,B);if(typeof adminOpen==="function")adminOpen();};
+  window.RERENDER=function(){if(md==="read"&&SIN_MODE)renderSin27(A);else if(md==="read")renderReading(A);else if(md==="name")renderName(A);else if(md==="fate")renderFate(A);else renderMatch(A,B);if(typeof adminOpen==="function")adminOpen();};
   window.RERENDER();
   $("form").style.display="none";$("result").classList.add("on");window.scrollTo(0,0);
 };
